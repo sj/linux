@@ -31,6 +31,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get install flex bison libc6-dev-i386-amd64-cross libc6-i386-amd64-cross gcc-9-plugin-dev libgmp-dev libgmpxx4ldbl libmpc-dev libmpfr-dev dwarves libdw1 libyaml-0-2 libyaml-dev libssl-dev bc libelf-dev
+
+    - name: Print system info
+      run: |
+        cat /proc/cpuinfo
+        cat /proc/meminfo
      
     - name: Checkout repository
       uses: actions/checkout@v2
