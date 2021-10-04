@@ -1,0 +1,39 @@
+# For most projects, this workflow file will not need changing; you simply need
+# to commit it to your repository.
+#
+# You may wish to alter this file to override the set of languages analyzed,
+# or to provide custom queries or build logic.
+#
+# ******** NOTE ********
+# We have attempted to detect the languages in your repository. Please check
+# the `language` matrix defined below to confirm you have the correct set of
+# supported CodeQL languages.
+#
+name: "Standard build (defconfig)"
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+     
+    steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get install flex bison libc6-dev-i386-amd64-cross libc6-i386-amd64-cross gcc-9-plugin-dev libgmp-dev libgmpxx4ldbl libmpc-dev libmpfr-dev dwarves libdw1 libyaml-0-2 libyaml-dev libssl-dev bc libelf-dev
+     
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run standard build
+      run: make defconfig
