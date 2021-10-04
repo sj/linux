@@ -33,6 +33,10 @@ jobs:
         # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
 
     steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get install flex bison libc6-dev-i386-amd64-cross libc6-i386-amd64-cross gcc-9-plugin-dev libgmp-dev libgmpxx4ldbl libmpc-dev libmpfr-dev dwarves libdw1 libyaml-0-2 libyaml-dev libssl-dev bc libelf-dev
+     
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -45,11 +49,7 @@ jobs:
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
-
-    - name: Install dependencies
-      run: |
-        sudo apt-get install flex bison libc6-dev-i386-amd64-cross libc6-i386-amd64-cross gcc-9-plugin-dev libgmp-dev libgmpxx4ldbl libmpc-dev libmpfr-dev dwarves libdw1 libyaml-0-2 libyaml-dev libssl-dev bc libelf-dev
-        
+   
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
