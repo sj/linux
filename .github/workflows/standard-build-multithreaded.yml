@@ -9,7 +9,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "Standard build (defconfig)"
+name: "Standard build (defconfig, multithreaded)"
 
 on:
   workflow_dispatch:
